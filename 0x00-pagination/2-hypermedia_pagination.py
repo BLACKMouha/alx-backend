@@ -52,7 +52,7 @@ class Server:
             'data': rows_page,
             'next_page': None if end >= len(self.__dataset) else page + 1,
             'prev_page': None if page == 1 else page - 1,
-            'total_pages': math.ceilget_hyper(len(self.__dataset) / page_size)
+            'total_pages': math.ceil(len(self.__dataset) / page_size)
         }
 
 
