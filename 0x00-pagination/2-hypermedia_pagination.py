@@ -37,8 +37,8 @@ class Server:
                 and len(self.__dataset) == 0:
             self.__dataset = self.dataset()
         return self.__dataset[start:end]
-    
-    def get_hyper(self, page :int = 1, page_size: int = 10) -> List[List]:
+
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
         '''Saves metrics in a dictionary while paginating'''
         assert (
                 (type(page) == int and page > 0)
