@@ -45,6 +45,9 @@ class Server:
                  and index < len(self.dataset()))
                 and (type(page_size) is int and page_size > 0))
         indexed_dataset = self.__indexed_dataset
+        self.__dataset
+        for k in indexed_dataset.values():
+            self.__dataset.append(k)
         end = index + page_size
         if end > len(indexed_dataset):
             end = None
