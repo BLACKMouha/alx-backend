@@ -41,27 +41,27 @@ class Server:
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         '''Check changes of __indexed_dataset and retrieves data accordingly'''
-        assert ((type(index) is int and index > -1
-                 and index < len(self.dataset()))
+        indexed_dataset = self.indexed_dataset()
+        len_id = len(indexed_dataset)
+
+        assert ((type(index) is int and -1 < index < len_id)
                 and (type(page_size) is int and page_size > 0))
-        indexed_dataset = self.__indexed_dataset
-        self.__dataset = []
-        for k in indexed_dataset.values():
-            self.__dataset.append(k)
-        end = index + page_size
-        if end > len(indexed_dataset):
-            end = None
-        data = list(indexed_dataset.values())[index:end]
-        tmp_index = index + page_size
-        if tmp_index < len(indexed_dataset):
-            next_index = list(indexed_dataset.keys())[index + page_size]
-        else:
-            next_index = list(indexed_dataset.keys())[-1]
-        if next_index == index:
-            next_index = None
+
+        i = index
+        data = []
+        for j in range(page_size):
+            while True:
+                row = indexed_dataset.get(i, None)
+                i += 1
+                if i < len_id and row is None:
+                    continue
+                else:
+                    break
+            if row:
+                data.append(row)
         return {
             'index': index,
-            'next_index': next_index,
-            'page_size': page_size,
-            'data': data
+            'next_index': i,
+            'data': data,
+            'page_size': len(data)
         }
