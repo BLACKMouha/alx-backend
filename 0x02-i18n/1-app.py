@@ -11,30 +11,12 @@ babel = Babel(app)
 class Config(object):
     '''Config representation for setting a Flask app'''
     LANGUAGES = ['en', 'fr']
-    locale = 'en'
-    timezone = 'UTC'
+    BABEL_DEFAULT_LOCALE = 'en'
+    BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
 config = Config()
-app.config['BABEL_DEFAULT_LOCALE'] = config.locale
-app.config['BABEL_DEFAULT_TIMEZONE'] = config.timezone
-
-
-@babel.localeselector
-def get_locale():
-    return config.locale
-
-
-@babel.localeselector
-def get_timezone():
-    return config.timezone
-
-
-@app.before_request
-def before_any_request():
-    '''Called before a request is handled'''
-    g.locale = str(get_locale())
-    g.timezone = str(get_timezone())
+app.config.from_object(Config)
 
 
 @app.route('/', strict_slashes=False)
