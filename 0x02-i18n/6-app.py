@@ -25,16 +25,16 @@ class Config(object):
 def get_locale():
     '''Finds the best choice from the set of supported languag'''
     lang = request.args.get('locale', None)
-    if lang in app.config.get('LANGUAGES', ['en', 'fr']):
+    app_langs = app.config.get('LANGUAGES', ['en', 'fr'])
+    if lang in app_langs:
         return Locale(language=lang)
-    uID = request.args.get('login_as', None)
-    try:
-        uID = int(uID)
-    except Exception as e:
-        print('Expecting a positive integer for user ID')
-    user = users.get(uID, None)
-    if user.get('locale', None) in app.config.get('LANGUAGES', ['en', 'fr']):
-        return user.get('locale', )
+    if g.user:
+        lang = g.user.get('locale', None)
+        if lang in app_langs:
+            return lang
+    lang = request.headers.get('locale', None)
+    if lang in app_langs:
+        return lang
     return request.accept_languages.best_match(
         app.config.get('LANGUAGES', ['en', 'fr']))
 
