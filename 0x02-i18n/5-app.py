@@ -7,10 +7,10 @@ app = Flask(__name__)
 babel = Babel(app)
 
 users = {
-    '1': {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
-    '2': {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
-    '3': {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
-    '4': {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
+    1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
+    2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
+    3: {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
+    4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
 
 
@@ -38,7 +38,7 @@ def index():
 
 
 @app.before_request
-def before_any_request():
+def before_request():
     '''Called before handling a request'''
     g.user = get_user()
 
@@ -49,7 +49,11 @@ def get_user():
     '''
     uID = request.args.get('login_as', None)
     if uID:
-        return users.get(uID, None)
+        try:
+            return users.get(int(uID), None)
+        except Exception as e:
+            print('a number should be given')
+            return None
     return None
 
 
