@@ -20,6 +20,16 @@ app.config['BABEL_DEFAULT_LOCALE'] = config.locale
 app.config['BABEL_DEFAULT_TIMEZONE'] = config.timezone
 
 
+@babel.localeselector
+def get_locale():
+    return config.locale
+
+
+@babel.localeselector
+def get_timezone():
+    return config.timezone
+
+
 @app.before_request
 def before_any_request():
     '''Called before a request is handled'''
