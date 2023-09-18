@@ -24,10 +24,7 @@ def get_locale():
 @app.route('/', strict_slashes=False)
 def index():
     '''Handle root route'''
-    return render_template(
-        '3-index.html',
-        hh='Welcome to Holberton',
-        ht='Hello world!')
+    return render_template('3-index.html')
 
 
 if __name__ == '__main__':
