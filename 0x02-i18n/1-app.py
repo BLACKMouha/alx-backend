@@ -7,20 +7,20 @@ from pytz import utc
 app = Flask(__name__)
 babel = Babel(app)
 
+
 class Config(object):
     '''Config representation for setting a Flask app'''
     LANGUAGES = ['en', 'fr']
-    local = 'en'
+    locale = 'en'
     timezone = 'UTC'
 
 
 config = Config()
-app.config['BABEL_DEFAULT_LOCALE'] = config.default_langague
-app.config['BABEL_DEFAULT_TIMEZONE'] = config.default_timezone
+app.config['BABEL_DEFAULT_LOCALE'] = config.locale
+app.config['BABEL_DEFAULT_TIMEZONE'] = config.timezone
 
 
 @app.before_request
-@babel.localeselector
 def before_any_request():
     '''Called before a request is handled'''
     g.locale = str(get_locale())
