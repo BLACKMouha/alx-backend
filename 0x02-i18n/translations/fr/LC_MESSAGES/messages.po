@@ -20,11 +20,11 @@ msgstr ""
 
 #: templates/2-index.html:6
 #, python-format
-msgid "%(home_title)s"
-msgstr "Bienvenue Holberton"
+msgid "home_title"
+msgstr "Bienvenue chez Holberton"
 
 #: templates/2-index.html:9
 #, python-format
-msgid "%(home_header)s"
+msgid "home_header"
 msgstr "Bonjour monde!"
 
