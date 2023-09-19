@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-09-18 18:17+0000\n"
-"PO-Revision-Date: 2023-09-18 18:17+0000\n"
+"POT-Creation-Date: 2023-09-19 14:11+0000\n"
+"PO-Revision-Date: 2023-09-19 14:12+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -19,18 +19,26 @@ msgstr ""
 "Generated-By: Babel 2.8.0\n"
 
 #: templates/3-index.html:6 templates/4-index.html:6 templates/5-index.html:6
+#: templates/6-index.html:6 templates/7-index.html:6
 msgid "home_title"
 msgstr "Bienvenue chez Holberton"
 
 #: templates/3-index.html:9 templates/4-index.html:9 templates/5-index.html:9
+#: templates/6-index.html:9 templates/7-index.html:9
 msgid "home_header"
 msgstr "Bonjour monde!"
 
-#: templates/5-index.html:12
+#: templates/5-index.html:12 templates/6-index.html:12
+#: templates/7-index.html:12
 msgid "logged_in"
 msgstr "Vous êtes connecté en tant que %(username)s."
 
-#: templates/5-index.html:14
+#: templates/5-index.html:14 templates/6-index.html:14
+#: templates/7-index.html:14
 msgid "no_login"
 msgstr "Vous n'êtes pas connecté."
+
+#: templates/7-index.html:18
+msgid "used_timezone"
+msgstr "Le fuseau horaire est %(timezone)s."
 
