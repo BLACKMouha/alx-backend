@@ -9,10 +9,13 @@
     <h1>{{ _('home_header') }}</h1>
     <p>
         {% if g.user %}
-            {{ _('logged_in',  username=g.user.get('name', None)) }}
+            {{ _('logged_in', username=g.user.get('name', None)) }}
         {% else %}
             {{ _('no_login') }}
         {% endif %}
+    </p>
+    <p>
+        {{ _('used_timezone', timezone=tz) }}
     </p>
 </body>
 </html>
