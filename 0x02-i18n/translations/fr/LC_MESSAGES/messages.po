@@ -39,6 +39,6 @@ msgid "no_login"
 msgstr "Vous n'êtes pas connecté."
 
 #: templates/7-index.html:18
-msgid "used_timezone"
-msgstr "Le fuseau horaire est %(timezone)s."
+msgid "current_datetime"
+msgstr "Nous sommes le %(current_datetime)s."
 
